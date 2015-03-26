@@ -15,20 +15,20 @@ public class MenuItemList
          this.selected = 0; //the ^top one
       }
    }
-   
-   //draws the MenuItems' menu items,
-   //                     bottom is where the final MenuItems menu item should be written
+
+   // int bottom is where the list begins to be drawn
+   // no damn clue why i called it bottom
    public void drawList(AsciiPanel terminal, int bottom)
    {
-      for(int n = items.length-1; n >= 0; n--) //from the back of the items array to the fronmt
+      for(int n = items.length-1; n >= 0; n--)
       {
          Color c;
          if (n != selected)
            c = items[n].color;
          else
-           c = AsciiPanel.blue;
+           c = AsciiPanel.brightYellow;
          
-         terminal.writeCenter(selected + " " + items[n].text, bottom+n, c);
+         terminal.writeCenter(items[n].text, bottom+n, c);
       }
    }
    

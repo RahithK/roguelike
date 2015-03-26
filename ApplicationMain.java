@@ -1,3 +1,25 @@
+/* THIS CLASS CONTAINS THE MAIN METHOD
+
+List of colors in AsciiPanel
+black
+red
+green
+yellow
+blue
+magenta
+cyan
+white
+brightBlack
+brightRed
+brightGreen
+brightYellow
+brightBlue
+brightMagenta
+brightCyan
+brightWhite
+
+*/
+
 import javax.swing.JFrame;
 import asciiPanel.AsciiPanel;
 import java.awt.event.KeyEvent;

@@ -1,4 +1,5 @@
 import java.awt.event.KeyEvent;
+import java.io.*;
 
 import asciiPanel.AsciiPanel;
 
@@ -8,8 +9,11 @@ public class ScoreScreen implements Screen {
    
 	@Override
 	public void displayOutput(AsciiPanel terminal) {
-		terminal.writeCenter("score SCREEN", 1);
-		terminal.writeCenter("[P]LAY  [M]ENU", 22);
+		terminal.writeCenter(" _________________________________________ ", 1, AsciiPanel.brightWhite);
+      terminal.writeCenter("/                                         \\", 2, AsciiPanel.brightWhite);
+      terminal.writeCenter("|                highscores                |", 3, AsciiPanel.brightWhite);
+      terminal.writeCenter("\\_________________________________________/", 4, AsciiPanel.brightWhite);
+      menuItems.drawList(terminal, 49);
 	}
 
 	@Override
