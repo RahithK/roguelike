@@ -35,9 +35,9 @@ public class MenuItemList
    public void select(int direction) //the direction you'd like to select -1 = back 1, 1 = forward 1
    {
       this.selected += direction;
-      if(this.selected == this.items.length)
+      if(this.selected >= this.items.length)
          this.selected = 0;
-      else if(this.selected == -1)
+      else if(this.selected <= -1)
          this.selected = this.items.length -1;
    }
 }

@@ -16,6 +16,7 @@ public class StartScreen implements Screen {
 
    @Override
    public Screen respondToUserInput(KeyEvent key) {
+      /* Code for choosing menu items. */
       switch (key.getKeyCode()){
          case KeyEvent.VK_UP: 
             this.menuItems.select(-1);
@@ -26,13 +27,14 @@ public class StartScreen implements Screen {
          case KeyEvent.VK_ENTER:
             switch(menuItems.selected){
                case 0:
-                  return new PlayScreen();
+                  return new NameScreen();
                case 1:
                   return new InfoScreen();
                case 2:
-                  return new LoseScreen(); //change this to ScoreScreen
+                  return new ScoreScreen();
             }
       }
+      /* /menu code */
    	
       return this;
    }
