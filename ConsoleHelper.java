@@ -1,6 +1,7 @@
 /* ConsoleHelper by Alistair Carscadden 2015
    this class includes (or should include) all helpeful methods for drawing onto the terminal */
 import asciiPanel.AsciiPanel;   
+import java.awt.*;
 
 public class ConsoleHelper
 {
@@ -71,6 +72,59 @@ public class ConsoleHelper
       for (int i = 0; i < s.length; i++)
       {
          terminal.writeCenter(s[i], y + i);
+      }
+   }
+   
+   public static void writeCenterArray(AsciiPanel terminal, String[] s, int y, Color fgColor)
+   {
+      for (int i = 0; i < s.length; i++)
+      {
+         terminal.writeCenter(s[i], y + i, fgColor);
+      }
+   }
+   
+   public static void writeArray(AsciiPanel terminal, String[] s, int x, int y)
+   {
+      for (int n = 0; n < s.length; n++)
+      {
+         for (int nx = 0; nx < s[n].length(); nx++)
+         {
+            terminal.setCursorX(nx + x);
+            terminal.setCursorY(n + y);
+            terminal.write(s[n].charAt(nx));
+         }
+      }
+   }
+   
+   public static void writeArray(AsciiPanel terminal, String[] s, int x, int y, Color fgColor)
+   {
+      for (int n = 0; n < s.length; n++)
+      {
+         for (int nx = 0; nx < s[n].length(); nx++)
+         {
+            terminal.setCursorX(nx + x);
+            terminal.setCursorY(n + y);
+            terminal.write(s[n].charAt(nx), fgColor);
+         }
+      }
+   }
+   
+   public static void writeArray(AsciiPanel terminal, String[] s, int x, int y, boolean drawBlankSpace)
+   {
+      for (int n = 0; n < s.length; n++)
+      {
+         for (int nx = 0; nx < s[n].length(); nx++)
+         {
+            terminal.setCursorX(nx + x);
+            terminal.setCursorY(n + y);
+            if (!drawBlankSpace && s[n].charAt(nx) == ' ')
+            {
+            }
+            else
+            {
+               terminal.write(s[n].charAt(nx));
+            }
+         }
       }
    }
 }
