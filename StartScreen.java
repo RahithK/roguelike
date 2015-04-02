@@ -1,44 +1,21 @@
 import java.awt.event.KeyEvent;
 import asciiPanel.AsciiPanel;
+import java.awt.*;
 
 public class StartScreen implements Screen {
-   public MenuItemList menuItems = new MenuItemList("Play", "Info", "Highscores");
+   public MenuItemList menuItems = new MenuItemList("Singleplayer", "Multiplayer", "Scores", "Info", "Exit");
 
    @Override 
    public void displayOutput(AsciiPanel terminal) {
-      //* DEBUG STUFF REMOVE LATER *//
-      for (int i = 0; i < 100; i ++)
-      {
-         for (int j = 0; j < 50; j++)
-         {
-            terminal.setCursorX(i);
-            terminal.setCursorY(j);
-            if (i % 2 == 0 && j % 2 == 0)
-               terminal.write(' ', AsciiPanel.white, AsciiPanel.white);
-            else if (i % 2 == 0)
-               terminal.write(' ', AsciiPanel.white, AsciiPanel.brightBlack);
-            else if (j % 2 == 0)
-               terminal.write(' ', AsciiPanel.white, AsciiPanel.brightBlack);
-         }
-      }
-            
-      terminal.writeCenter("X", 30);
-      terminal.writeCenter("XX", 31);
-      terminal.writeCenter("XXX", 32);
-      terminal.writeCenter("XXXX", 33);
+
       // real stuff
-      terminal.writeCenter("next generation roguelike", 10, AsciiPanel.brightRed);
-      ConsoleHelper.rectNoFill(terminal, 25, 9, 50, 3);
-      ConsoleHelper.rectNoFill(terminal, 35, 38, 30, 7); 
+      String[] landscape = ArtReader.get("landscape");
+      String[] title = ArtReader.get("title");
       
+      ConsoleHelper.writeArray(terminal, landscape, 0, 0, new Color(210, 210, 210));
+      ConsoleHelper.writeCenterArray(terminal, title, 28, new Color(175, 100, 150));
+
       menuItems.drawList(terminal, 40);
-      
-      
-      //* DEBUG STUFF REMOVE LATER *//
-      for (int i = 0; i < 50; i++)
-         terminal.write("" + i, 0, i);
-      for (int i = 0; i < 98; i++)
-         terminal.write("" + i, i, 0);
    }
 
    @Override
@@ -56,9 +33,13 @@ public class StartScreen implements Screen {
                case 0:
                   return new NameScreen();
                case 1:
-                  return new InfoScreen();
+                  return new LoseScreen();
                case 2:
                   return new ScoreScreen();
+               case 3:
+                  return new InfoScreen();
+               case 4:
+                  System.exit(0);
             }
       }
       /* /menu code */
