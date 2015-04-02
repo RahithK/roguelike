@@ -4,6 +4,7 @@ import java.awt.*;
 /* Entities include all monsters, and the player.
    In the future they may (can) also include projectiles.
    */
+   
 public class Entity
 {
    private int health;

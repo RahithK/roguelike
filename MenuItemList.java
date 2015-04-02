@@ -26,7 +26,8 @@ public class MenuItemList
          if (n != selected)
            c = items[n].color;
          else
-           c = AsciiPanel.brightYellow;
+           // COLOR OF SELECTED MENU ITEMS
+           c = new Color(255, 0, 0);
          
          terminal.writeCenter(items[n].text, bottom+n, c);
       }

@@ -7,7 +7,6 @@ public enum Tile {
     BOUNDS('x', AsciiPanel.black);
 
     public char symbol;
-
     public Color color;
 
     Tile(char symbol, Color color){

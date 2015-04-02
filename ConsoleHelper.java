@@ -127,4 +127,23 @@ public class ConsoleHelper
          }
       }
    }
+   
+   public static void writeArray(AsciiPanel terminal, String[] s, int x, int y, Color color, boolean drawBlankSpace)
+   {
+      for (int n = 0; n < s.length; n++)
+      {
+         for (int nx = 0; nx < s[n].length(); nx++)
+         {
+            terminal.setCursorX(nx + x);
+            terminal.setCursorY(n + y);
+            if (!drawBlankSpace && s[n].charAt(nx) == ' ')
+            {
+            }
+            else
+            {
+               terminal.write(s[n].charAt(nx), color);
+            }
+         }
+      }
+   }
 }

@@ -6,7 +6,7 @@ public class Player extends Entity
    Player()
    {
       super();
-      this.color = AsciiPanel.green;
+      this.color = new Color(200, 255, 200);
    }
    
    Player(int x, int y)
@@ -14,7 +14,7 @@ public class Player extends Entity
       this.symbol = '@';
       this.x = x;
       this.y = y;
-      this.color = AsciiPanel.green;
+      this.color = new Color(200, 255, 200);
    }
    
    Player(Point p)
@@ -22,6 +22,6 @@ public class Player extends Entity
       this.symbol = '@';
       this.x = p.x;
       this.y = p.y;
-      this.color = AsciiPanel.green;
+      this.color = new Color(200, 255, 200);
    }
 }

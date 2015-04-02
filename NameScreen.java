@@ -1,5 +1,6 @@
 import java.awt.event.KeyEvent;
 import asciiPanel.AsciiPanel;
+import java.awt.Color;
 
 public class NameScreen implements Screen {
    private String name = "";
@@ -7,16 +8,17 @@ public class NameScreen implements Screen {
 
    @Override
    public void displayOutput(AsciiPanel terminal) {
-      terminal.writeCenter(" _________________________________________ ", 1, AsciiPanel.brightWhite);
-      terminal.writeCenter("/                                         \\", 2, AsciiPanel.brightWhite);
-      terminal.writeCenter("|             create your hero             |", 3, AsciiPanel.brightWhite);
-      terminal.writeCenter("\\_________________________________________/", 4, AsciiPanel.brightWhite);
-      terminal.writeCenter("enter your name:", 9);
-      terminal.writeCenter(name, 10, AsciiPanel.brightYellow);
-      terminal.writeCenter("del to undo", 12);
-      terminal.writeCenter("enter when finished", 13);
+      String[] title = ArtReader.get("name");
+      String[] face = ArtReader.get("face");
+      ConsoleHelper.writeArray(terminal, face, 0, 13, new Color(50, 50, 50), false);
+      ConsoleHelper.writeCenterArray(terminal, title, 10, new Color(255, 100, 100));
+      
+      terminal.writeCenter("enter your name:", 25);
+      terminal.writeCenter(name, 27, AsciiPanel.brightYellow);
+      terminal.writeCenter("FOR NOW DON'T USE SHIFT", 29, new Color(255, 0, 0));
+      terminal.writeCenter("del to undo", 30);
+      terminal.writeCenter("enter when finished", 31);
       terminal.writeCenter(message, 25);
-      ConsoleHelper.rect(terminal, 5, 5, 10, 10);
    }
 
    @Override
@@ -40,7 +42,9 @@ public class NameScreen implements Screen {
          // if they pressed anything but enter or delete, add letter to the name
       else
       {
-         name += key.getKeyChar();
+         name += ("" + key.getKeyChar()).toUpperCase();
+         if (name.length() > 32)
+            name = name.substring(0, 32);
       }
       return this;
    }

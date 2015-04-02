@@ -9,8 +9,8 @@ public class ArtReader
    {
       String[] art = new String[0];
       String[] artFile = new String[0];
-      try { artFile = SimpleFiles.readArray("art"); } 
-      catch (Exception e) { System.out.println("ArtReader.java couldn't find 'art'"); }
+      try { artFile = SimpleFiles.readArray("art.txt"); } 
+      catch (Exception e) { System.out.println("ArtReader.java couldn't find 'art.txt'"); }
       for (int n = 0; n < artFile.length; n++)
       {
          //System.out.println(artFile[n].split(" ")[0]);
